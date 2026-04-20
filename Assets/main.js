@@ -3,13 +3,7 @@
 // Script otimizado para 99+ PageSpeed
 // ============================================
 
-// 🔧 CONFIGURAÇÃO - ALTERE APENAS ESTA LINHA
-// Coloque aqui o caminho para sua página de destino
-// Exemplos:
-// const DESTINO_URL = "destino.html";
-// const DESTINO_URL = "https://wa.me/5491112345678";
-// const DESTINO_URL = "destino.html";
-// ============================================
+// 🔧 CONFIGURAÇÃO - ARQUIVO DE DESTINO
 const DESTINO_URL = "destino.html";
 
 // ============================================
