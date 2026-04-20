@@ -4,7 +4,7 @@
 // ============================================
 
 // 🔧 CONFIGURAÇÃO - ARQUIVO DE DESTINO
-const DESTINO_URL = "https://offondigital.github.io/calzado-mayorista-pre-sell-pg1/destino.html";
+const DESTINO_URL = "destino.html";
 
 // ============================================
 // Código otimizado com requestIdleCallback
