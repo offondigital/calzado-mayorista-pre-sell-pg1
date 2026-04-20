@@ -8,7 +8,7 @@
 // Exemplos:
 // const DESTINO_URL = "destino.html";
 // const DESTINO_URL = "https://wa.me/5491112345678";
-// const DESTINO_URL = "https://seusite.com/catalogo";
+// const DESTINO_URL = "destino.html";
 // ============================================
 const DESTINO_URL = "destino.html";
 
