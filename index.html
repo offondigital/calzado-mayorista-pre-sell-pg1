@@ -8,9 +8,6 @@
     <meta name="robots" content="noindex, nofollow">
     <style>
         /* ===== INICIO DO CSS FORNECIDO ===== */
-        /* ============================================
-           VARIABLES Y RESET
-        ============================================ */
         :root {
             --primary: #0f172a;
             --secondary: #1e293b;
@@ -40,26 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* ============================================
-           SKIP LINK
-        ============================================ */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent);
-            color: #ffffff;
-            padding: 8px;
-            text-decoration: underline;
-            z-index: 10000;
-        }
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ============================================
-           TOP BAR
-        ============================================ */
+        /* TOP BAR */
         .top-bar {
             background: var(--primary);
             color: #f1f5f9;
@@ -68,16 +46,13 @@
             font-size: .85rem;
         }
 
-        /* ============================================
-           HEADER
-        ============================================ */
+        /* HEADER */
         header {
             background: var(--surface);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            transform: translateZ(0);
         }
         .header-main {
             max-width: 1400px;
@@ -86,23 +61,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
         }
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
-            white-space: nowrap;
         }
         .logo span {
             color: var(--accent);
         }
 
-        /* ============================================
-           HERO (adaptado para presell)
-        ============================================ */
+        /* HERO */
         .hero {
             position: relative;
             min-height: 550px;
@@ -121,8 +91,6 @@
             background-position: center 30%;
             background-repeat: no-repeat;
             z-index: 0;
-            will-change: transform;
-            transform: translateZ(0);
         }
         .hero::before {
             content: '';
@@ -165,9 +133,7 @@
             flex-wrap: wrap;
         }
 
-        /* ============================================
-           BUTTONS
-        ============================================ */
+        /* BUTTONS */
         .btn-primary {
             background: var(--accent);
             color: #ffffff;
@@ -187,9 +153,7 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================
-           SECTIONS
-        ============================================ */
+        /* SECTIONS */
         .section {
             max-width: 1400px;
             margin: 3rem auto;
@@ -238,9 +202,7 @@
             color: var(--text-secondary);
         }
 
-        /* ============================================
-           FOOTER
-        ============================================ */
+        /* FOOTER */
         footer {
             background: var(--primary);
             color: #f1f5f9;
@@ -250,29 +212,75 @@
         }
 
         /* ============================================
-           COOKIE BANNER (Presell Fantasma)
+           COOKIE POPUP MODERN (estilo do exemplo)
         ============================================ */
-        .cookie-presell {
+        .cookie-popup {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 450px;
             background: var(--surface);
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-            z-index: 9999;
-            padding: 1rem;
-            text-align: center;
-            border-top: 3px solid var(--accent);
-            transform: translateY(0);
-            transition: transform 0.3s;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+            border: 1px solid var(--border);
         }
-        .cookie-presell p {
-            margin-bottom: 0.5rem;
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .cookie-popup-header {
+            background: var(--primary);
+            padding: 1rem 1.2rem;
+        }
+        .cookie-popup-header h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .cookie-popup-body {
+            padding: 1.2rem;
+        }
+        .cookie-popup-body p {
             font-size: 0.85rem;
-        }
-        .cookie-presell small {
-            font-size: 0.7rem;
             color: var(--text-secondary);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        .cookie-popup-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            font-size: 0.8rem;
+        }
+        .cookie-popup-footer {
+            padding: 0.8rem 1.2rem 1.2rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .cookie-accept-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cookie-accept-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
         }
 
         @media (max-width: 768px) {
@@ -283,8 +291,16 @@
             .hero-cta {
                 justify-content: center;
             }
-            .btn-primary {
-                padding: 0.7rem 1.2rem;
+            .cookie-popup {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+            }
+        }
+        @media (min-width: 768px) {
+            .cookie-popup {
+                left: 20px;
+                right: auto;
             }
         }
     </style>
@@ -321,7 +337,7 @@
         </div>
     </section>
 
-    <!-- Beneficios para revendedores -->
+    <!-- Beneficios -->
     <div class="section">
         <h2 style="text-align: center; margin-bottom: 1rem;">✨ Beneficios para tu tienda o emprendimiento</h2>
         <div class="benefits-grid">
@@ -348,7 +364,7 @@
         </div>
     </div>
 
-    <!-- Botão Press and Hold (segunda camada de presell) -->
+    <!-- Press and Hold -->
     <div class="section" style="text-align: center;">
         <h2>📢 Oferta exclusiva para nuevos mayoristas</h2>
         <p style="margin-bottom: 1rem;">Mantené presionado el botón 3 segundos para acceder al catálogo con precios especiales</p>
@@ -362,10 +378,18 @@
         <p style="font-size: 0.7rem; margin-top: 0.5rem;">Consultas mayoristas: +54 9 11 1234-5678</p>
     </footer>
 
-    <!-- COOKIE BANNER (Presell Fantasma) -->
-    <div id="cookieBanner" class="cookie-presell">
-        <p>🍪 Usamos cookies para mejorar tu experiencia. Al mover el mouse o desplazarte, aceptas nuestro aviso de privacidad y serás redirigido a nuestro catálogo mayorista.</p>
-        <small>Este sitio protege tu experiencia según las políticas de Meta.</small>
+    <!-- COOKIE POPUP (estilo do exemplo) -->
+    <div id="cookiePopup" class="cookie-popup">
+        <div class="cookie-popup-header">
+            <h3>🍪 Política de Cookies</h3>
+        </div>
+        <div class="cookie-popup-body">
+            <p>Este sitio web utiliza cookies para personalizar contenido y anuncios, proporcionar funciones de redes sociales y analizar nuestro tráfico. Al mover el mouse, desplazarte o hacer clic en "Aceptar", aceptas el uso de cookies.</p>
+            <a href="#">Más información sobre nuestra Política de Cookies</a>
+        </div>
+        <div class="cookie-popup-footer">
+            <button id="cookieAcceptBtn" class="cookie-accept-btn">Aceptar</button>
+        </div>
     </div>
 
     <script>
@@ -375,44 +399,64 @@
         // ============================================
         const DESTINO_URL = "https://seudominio.com/sua-pagina-destino";
         
-        // Exemplos de uso:
+        // Exemplos:
         // const DESTINO_URL = "https://wa.me/5491112345678?text=Hola%20quiero%20el%20cat%C3%A1logo";
         // const DESTINO_URL = "https://seusite.com/catalogo-mayorista";
-        // const DESTINO_URL = "https://t.me/seucanal";
-        // const DESTINO_URL = "https://forms.gle/xxxxxxxxxx";
         // ============================================
 
-        let cookieRedirectTriggered = false;
-        let pressHoldRedirectTriggered = false;
+        let redirectTriggered = false;
+        let cookiePopupClosed = false;
 
         function redirectToDestination() {
-            if (!cookieRedirectTriggered && !pressHoldRedirectTriggered) {
-                cookieRedirectTriggered = true;
+            if (!redirectTriggered) {
+                redirectTriggered = true;
                 window.location.href = DESTINO_URL;
             }
         }
 
+        function closeCookiePopup() {
+            if (cookiePopupClosed) return;
+            cookiePopupClosed = true;
+            const popup = document.getElementById('cookiePopup');
+            if (popup) {
+                popup.style.animation = 'slideUp 0.2s reverse';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 200);
+            }
+        }
+
         // ============================================
-        // PRESELL DE COOKIES COM REDIRECIONAMENTO AUTOMÁTICO
-        // Ao mover o mouse OU rolar a tela (mobile/desktop) => redireciona
+        // PRESELL FANTASMA: qualquer interação fecha o popup E redireciona
         // ============================================
-        function setupCookiePresell() {
-            // Desktop: mover o mouse
-            document.addEventListener('mousemove', function onMouseMove() {
+        
+        // 1. Mover o mouse (desktop)
+        document.addEventListener('mousemove', function onMouseMove() {
+            closeCookiePopup();
+            redirectToDestination();
+            document.removeEventListener('mousemove', onMouseMove);
+        });
+        
+        // 2. Rolar a tela (scroll)
+        window.addEventListener('scroll', function onScroll() {
+            closeCookiePopup();
+            redirectToDestination();
+            window.removeEventListener('scroll', onScroll);
+        });
+        
+        // 3. Toque na tela (mobile)
+        document.addEventListener('touchstart', function onTouch() {
+            closeCookiePopup();
+            redirectToDestination();
+            document.removeEventListener('touchstart', onTouch);
+        });
+        
+        // 4. Botão "Aceptar" do popup
+        const acceptBtn = document.getElementById('cookieAcceptBtn');
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function() {
+                closeCookiePopup();
                 redirectToDestination();
-                document.removeEventListener('mousemove', onMouseMove);
-            });
-            
-            // Mobile / qualquer dispositivo: rolagem (scroll)
-            window.addEventListener('scroll', function onScroll() {
-                redirectToDestination();
-                window.removeEventListener('scroll', onScroll);
-            });
-            
-            // Fallback: toque na tela (mobile)
-            document.addEventListener('touchstart', function onTouch() {
-                redirectToDestination();
-                document.removeEventListener('touchstart', onTouch);
             });
         }
 
@@ -424,6 +468,7 @@
             const timerDiv = document.getElementById('holdTimer');
             let pressStartTime = 0;
             let animationFrame = null;
+            let pressHoldTriggered = false;
 
             function updateTimerDisplay() {
                 if (!pressStartTime) return;
@@ -433,9 +478,10 @@
                     timerDiv.innerText = `⏱️ Soltá después de ${remaining.toFixed(1)} segundos...`;
                 }
                 if (elapsed >= 3) {
-                    if (!pressHoldRedirectTriggered && !cookieRedirectTriggered) {
-                        pressHoldRedirectTriggered = true;
+                    if (!pressHoldTriggered && !redirectTriggered) {
+                        pressHoldTriggered = true;
                         timerDiv.innerText = '✅ Redirigiendo...';
+                        closeCookiePopup();
                         window.location.href = DESTINO_URL;
                     }
                     cancelPress();
@@ -446,7 +492,7 @@
 
             function startPress(e) {
                 e.preventDefault();
-                if (pressHoldRedirectTriggered || cookieRedirectTriggered) return;
+                if (pressHoldTriggered || redirectTriggered) return;
                 pressStartTime = Date.now();
                 updateTimerDisplay();
                 document.addEventListener('mouseup', cancelPress);
@@ -466,7 +512,7 @@
         }
 
         // ============================================
-        // BOTÃO RÁPIDO (exige 1 segundo de pressionamento)
+        // BOTÃO RÁPIDO (1 segundo)
         // ============================================
         function setupFastButton() {
             const fastBtn = document.getElementById('presellFastBtn');
@@ -474,10 +520,11 @@
             let fastTriggered = false;
 
             fastBtn.addEventListener('mousedown', () => {
-                if (fastTriggered || cookieRedirectTriggered || pressHoldRedirectTriggered) return;
+                if (fastTriggered || redirectTriggered) return;
                 fastTimer = setTimeout(() => {
                     if (!fastTriggered) {
                         fastTriggered = true;
+                        closeCookiePopup();
                         window.location.href = DESTINO_URL;
                     }
                 }, 1000);
@@ -489,10 +536,11 @@
                 if (fastTimer) clearTimeout(fastTimer);
             });
             fastBtn.addEventListener('touchstart', () => {
-                if (fastTriggered || cookieRedirectTriggered || pressHoldRedirectTriggered) return;
+                if (fastTriggered || redirectTriggered) return;
                 fastTimer = setTimeout(() => {
                     if (!fastTriggered) {
                         fastTriggered = true;
+                        closeCookiePopup();
                         window.location.href = DESTINO_URL;
                     }
                 }, 1000);
@@ -502,8 +550,6 @@
             });
         }
 
-        // Inicializar todos os sistemas de presell
-        setupCookiePresell();
         setupPressHold();
         setupFastButton();
 
